@@ -1,11 +1,11 @@
 // Implementation of Trie data structure in java.
 
 /*
-Trie object will be instantiated and called as such:
-Trie obj = new Trie();
-obj.insert(word);
-param_0 = obj.search(word);
-param_1 = obj.startsWith(word);
+ * Trie object will be instantiated and called as such:
+ * Trie obj = new Trie();
+ * obj.insert(word);
+ * boolean param_0 = obj.search(word);
+ * boolean param_1 = obj.startsWith(word);
 */
 
 // Create Trie node
