@@ -3,8 +3,8 @@
 # Trie object will be instantiated and called as such:
 # obj = Trie()
 # obj.insert(word)
-# param_2 = obj.search(word)
-# param_3 = obj.startsWith(prefix)
+# param_0 = obj.search(word)
+# param_1 = obj.startsWith(prefix)
 
 class TrieNode:
     def __init__(self, val='', is_end=False):
