@@ -1,4 +1,4 @@
-// Implementation of Trie data structure in python.
+// Implementation of Trie data structure in C++.
 
 /*
  * Trie object will be instantiated and called as such:

@@ -1,32 +1,35 @@
-// Implementation of Union Find / Disjoint Set Union (DSU) in java.
+// Implementation of Union Find / Disjoint Set Union (DSU) in C++
 
 /*
  * DSU object will be instantiated and called as such:
- * UnionFind uf = new UnionFind(n);
+ * UnionFind uf(n);
  * uf.unite(x, y);
  * int parent = uf.findRootOf(x);
- * boolean connected = uf.isConnected(x, y);
+ * bool connected = uf.isConnected(x, y);
 */
 
+#include <vector>
+using namespace std;
+
 class UnionFind {
-    private int[] root;
-    private int[] rank;
-    private int sets;
+private:
+    vector<int> root;
+    vector<int> rank;
+    int sets;
 
+public:
     // Constructor to create n sets
-    public UnionFind(int n) {
-        root = new int[n];
-        rank = new int[n];
+    UnionFind(int n) {
+        root.resize(n);
+        rank.resize(n, 1);
         sets = n;
-
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; ++i) {
             root[i] = i;
-            rank[i] = 1;
         }
     }
 
     // Find the root of x (with path compression)
-    public int findRootOf(int x) {
+    int findRootOf(int x) {
         if (root[x] != x) {
             root[x] = findRootOf(root[x]); // Path compression
         }
@@ -34,7 +37,7 @@ class UnionFind {
     }
 
     // Unite the sets containing x and y
-    public void unite(int x, int y) {
+    void unite(int x, int y) {
         int rootX = findRootOf(x);
         int rootY = findRootOf(y);
 
@@ -56,8 +59,8 @@ class UnionFind {
     }
 
     // Check if x and y are connected (belong to the same set)
-    public boolean isConnected(int x, int y) {
+    bool isConnected(int x, int y) {
         return findRootOf(x) == findRootOf(y);
     }
-}
+};
 
