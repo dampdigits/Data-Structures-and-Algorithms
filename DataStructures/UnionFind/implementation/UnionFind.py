@@ -1,7 +1,7 @@
 # Implementation of Union Find / Disjoint Set Union (DSU) in python
 
 # DSU object will be instantiated and called as such:
-# obj = UnionFind()
+# obj = UnionFind(n)
 # obj.unite(x, y)
 # parent = obj.findRootOf(x)
 # connected = obj.isConnected(x, y)
@@ -16,6 +16,7 @@ class UnionFind:
     def findRootOf(self, x):
         ''' Find the root of x '''
         while self.root[x] != x:
+            # Path compression
             self.root[x] = self.root[self.root[x]]
             x = self.root[x]
         return x
@@ -29,6 +30,7 @@ class UnionFind:
         if rootX == rootY:
             return
 
+        # Put the smaller set into the bigger set
         if self.rank[rootY] > self.rank[rootX]:
             self.root[rootX] = rootY
             self.rank[rootY] += self.rank[rootX]
@@ -36,6 +38,7 @@ class UnionFind:
             self.root[rootY] = rootX
             self.rank[rootX] += self.rank[rootY]
 
+        # Decrement set count
         self.sets -= 1
 
     def isConnected(self, x, y):
